@@ -47,8 +47,8 @@ class GridworldEnv(discrete.DiscreteEnv):
         it = np.nditer(grid, flags=['multi_index'])
 
         while not it.finished:
-            s = it.iterindex
-            y, x = it.multi_index
+            s = it.iterindex #二维转化为一维的坐标
+            y, x = it.multi_index #二维坐标
 
             # P[s][a] = (prob, next_state, reward, is_done)
             P[s] = {a : [] for a in range(nA)}
@@ -57,7 +57,7 @@ class GridworldEnv(discrete.DiscreteEnv):
             reward = 0.0 if is_done(s) else -1.0
 
             # We're stuck in a terminal state
-            if is_done(s):
+            if is_done(s): # 在terminal state 任何动作都不会导致状态变化，换言之，就是stuck了
                 P[s][UP] = [(1.0, s, reward, True)]
                 P[s][RIGHT] = [(1.0, s, reward, True)]
                 P[s][DOWN] = [(1.0, s, reward, True)]
