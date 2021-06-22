@@ -66,6 +66,7 @@ class BlackjackEnv(gym.Env):
     """
     def __init__(self, natural=False):
         self.action_space = spaces.Discrete(2)
+#         print(self.action_space)
         self.observation_space = spaces.Tuple((
             spaces.Discrete(32),
             spaces.Discrete(11),
