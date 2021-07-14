@@ -1,0 +1,5 @@
+jupyterlab==3.0.16
+pandas==1.1.5
+psutil
+tensorflow==1.15
+matplotlib==3.3.4
